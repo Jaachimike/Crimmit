@@ -1,16 +1,15 @@
-version: "3.8"
+version: "3"
 services:
   app:
     build: .
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     depends_on:
-      - mongodb
-  mongodb:
+      - db
+    environment:
+      MONGO_URI: mongodb+srv://okaforjaachi:ow6cdXAsMuqSsDo2@cluster0.6ox8a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+  db:
     image: mongo
     ports:
       - "27017:27017"
-    volumes:
-      - ./data/db:/data/db
