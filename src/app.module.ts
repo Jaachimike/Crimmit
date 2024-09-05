@@ -8,12 +8,16 @@ import {UsersModule} from "./users/users.module";
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      "mongodb+srv://okaforjaachi:ow6cdXAsMuqSsDo2@cluster0.6ox8a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    ),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ".env",
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>("MONGO_URI"),
+      }),
     }),
     AuthModule,
     UsersModule,

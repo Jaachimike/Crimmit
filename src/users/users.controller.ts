@@ -1,7 +1,6 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Param,
   Delete,
@@ -16,9 +15,9 @@ import {JwtAuthGuard} from "../auth/jwt-auth.guard";
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
-  findAll() {
+  async findAll() {
     return this.usersService.findAll();
   }
 

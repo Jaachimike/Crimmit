@@ -1,4 +1,8 @@
-import {Injectable, UnauthorizedException} from "@nestjs/common";
+import {
+  Injectable,
+  UnauthorizedException,
+  ConflictException,
+} from "@nestjs/common";
 import {JwtService} from "@nestjs/jwt";
 import {UsersService} from "../users/users.service";
 import {User} from "../users/schemas/user.schema";
@@ -16,7 +20,19 @@ export class AuthService {
 
   // Register a new user
   async register(registerDto: RegisterDto): Promise<User> {
-    const {password, ...userData} = registerDto;
+    const {password, email, username, ...userData} = registerDto;
+
+    // Check if the username or email already exists
+    const existingUser = await this.usersService.findByUsername(username);
+    const existingEmail = await this.usersService.findByEmail(email);
+
+    if (existingUser) {
+      throw new ConflictException("Username is already taken.");
+    }
+
+    if (existingEmail) {
+      throw new ConflictException("Email is already registered.");
+    }
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
@@ -25,6 +41,8 @@ export class AuthService {
     // Create user with hashed password
     const user: CreateUserDto = {
       ...userData,
+      username,
+      email,
       password: hashedPassword,
     };
 
@@ -40,7 +58,7 @@ export class AuthService {
       const {password, ...result} = user.toObject();
       return result;
     }
-    return null; // Return null if validation fails
+    return null; // Returns null if validation fails
   }
 
   // User login

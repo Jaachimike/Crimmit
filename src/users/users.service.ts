@@ -15,7 +15,11 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+    const users = this.userModel.find().exec();
+    if ((await users).length < 1) {
+      throw new NotFoundException(`No Users found`);
+    }
+    return users;
   }
 
   async findById(id: string): Promise<User> {
@@ -30,7 +34,7 @@ export class UsersService {
     return this.userModel.findOne({email}).exec();
   }
 
-  async findByUsername(username: string): Promise<User> {
+  async findByUsername(username: string): Promise<(User & Document) | null> {
     return this.userModel.findOne({username}).exec();
   }
 
@@ -44,11 +48,14 @@ export class UsersService {
     return updatedUser;
   }
 
-  async delete(id: string): Promise<User> {
+  async delete(id: string): Promise<{message: string; deletedUser: User}> {
     const deletedUser = await this.userModel.findByIdAndDelete(id).exec();
     if (!deletedUser) {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
-    return deletedUser;
+    return {
+      message: "User Deleted Successfully",
+      deletedUser: deletedUser,
+    };
   }
 }
