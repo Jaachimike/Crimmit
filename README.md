@@ -41,34 +41,34 @@ cp .env.template .env
 
 ## Running the Application
 
-## Using Docker
+    ## Using Docker
 
-1. Build and start the containers (Ensure Docker is running before running command):
+    1. Build and start the containers (Ensure Docker is running before running command):
 
-```bash
-docker-compose up --build
-```
+    ```bash
+    docker-compose up --build
+    ```
 
-2. The application will be available at [http://localhost:3000](http://localhost:3000).
+    2. The application will be available at [http://localhost:3000](http://localhost:3000).
 
-3. To stop the application, use Ctrl+C in the terminal or run:
+    3. To stop the application, use Ctrl+C in the terminal or run:
 
-```bash
-docker-compose down
-```
+    ```bash
+    docker-compose down
+    ```
 
-## Local Development
+    ## Local Development
 
-```bash
-# development
-$ npm run start
+    ```bash
+    # development
+    $ npm run start
 
-# watch mode
-$ npm run start:dev
+    # watch mode
+    $ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
+    # production mode
+    $ npm run start:prod
+    ```
 
 ## Run tests
 
