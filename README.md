@@ -1,18 +1,38 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Nest App with User Management and User Authentication.
 
 ## Project setup
+
+## Local Setup
 
 ```bash
 $ npm install
 ```
 
+## Docker Setup
+
+1. Ensure you have Docker and Docker Compose installed on your system.
+2. Clone this repository
+
+```bash
+git clone https://github.com/Jaachimike/Crimmit.git
+cd Crimmit
+```
+
 ## Environment Variables
 
-Create a .env file and add the provided env variables
+1. Copy the .env.template file to create a new .env file:
 
-## Compile and run the project
+```bash
+cp .env.template .env
+```
+
+2. Open the .env file and replace the placeholder values with your actual MongoDB URI and JWT secret.
+
+## Running the Application
+
+## Local Development
 
 ```bash
 # development
@@ -23,6 +43,22 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+```
+
+## Using Docker
+
+1. Build and start the containers:
+
+```bash
+docker-compose up --build
+```
+
+2. The application will be available at [http://localhost:3000](http://localhost:3000).
+
+3. To stop the application, use Ctrl+C in the terminal or run:
+
+```bash
+docker-compose down
 ```
 
 ## Run tests
@@ -37,29 +73,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
