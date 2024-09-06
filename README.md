@@ -4,30 +4,30 @@ Nest App with User Management and User Authentication.
 
 ## Project setup
 
-## Docker Setup
+    ## Docker Setup
 
-1. Ensure you have Docker and Docker Compose installed on your system.
-2. Clone this repository
+    1. Ensure you have Docker and Docker Compose installed on your system.
+    2. Clone this repository
 
-```bash
-git clone https://github.com/Jaachimike/Crimmit.git
-cd Crimmit
-```
+    ```bash
+    git clone https://github.com/Jaachimike/Crimmit.git
+    cd Crimmit
+    ```
 
-## Local Setup
+    ## Local Setup
 
-1. Clone this repository.
+    1. Clone this repository.
 
-```bash
-git clone https://github.com/Jaachimike/Crimmit.git
-cd Crimmit
-```
+    ```bash
+    git clone https://github.com/Jaachimike/Crimmit.git
+    cd Crimmit
+    ```
 
-2. Install necessary depedencies
+    2. Install necessary depedencies
 
-```bash
-$ npm install
-```
+    ```bash
+    $ npm install
+    ```
 
 ## Environment Variables
 
